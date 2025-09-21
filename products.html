@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products - Responsive Web App</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+    }
+
+    header {
+      background: #007bff;
+      padding: 10px 20px;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav ul li a.active {
+      text-decoration: underline;
+    }
+
+    .products-section {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .product-card {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 15px;
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: scale(1.05);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 250px;   /* Same size for all */
+      object-fit: cover; /* Crop properly */
+      border-radius: 8px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 15px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #0056b3;
+    }
+
+    /* Popup modal styling */
+    .modal {
+      display: none; 
+      position: fixed; 
+      z-index: 1000; 
+      left: 0; 
+      top: 0; 
+      width: 100%; 
+      height: 100%; 
+      background: rgba(0,0,0,0.6);
+      justify-content: center; 
+      align-items: center;
+    }
+
+    .modal-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      width: 400px;
+      text-align: center;
+      position: relative;
+    }
+
+    .modal-content img {
+      max-width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 22px;
+      cursor: pointer;
+      color: #333;
+    }
+
+    .close:hover {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <header>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="features.html">Features</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="cart.html">Cart</a></li>
+    </ul>
+  </nav>
+</header>
+
+  <section class="products-section">
+    <h1>Our Products</h1>
+    <div class="products-grid">
+
+      <!-- Handbags -->
+
+  <div class="product-card">
+  <img src="handbag1.jpg" alt=" Classy Handbag " />
+  <h3>Handbag 1</h3>
+  <p class="price">₹1,499</p>
+  <button class="btn" onclick="openModal('handbag1.jpg', 'Handbag 1', 'Elegant tan handbag with gold hardware.', '₹1,499', '⭐️⭐️⭐️⭐️☆ (4.2)')">View More</button>
+  <button class="btn cart-btn">Add to Cart</button>
+</div>
+
+
+<div class="product-card">
+  <img src="handbag2.jpg" alt="Handbag combo" />
+  <h3>Handbag 2</h3>
+  <p class="price">₹3,299</p>
+  <button class="btn" onclick="openModal('handbag2.jpg', 'Handbag 2', 'Stylish multi-color handbag combo for all occasions.', '₹3,299', '⭐️⭐️⭐️⭐️⭐️ (4.7)')">View More</button>
+  <button class="btn cart-btn">Add to Cart</button>
+</div>
+
+<div class="product-card">
+  <img src="shoes1.jpg" alt="White Shoes" />
+  <h3>Shoes 1</h3>
+  <p class="price">₹1,099</p>
+  <button class="btn" onclick="openModal('shoes1.jpg', 'Shoes 1', 'Comfortable white sneakers perfect for casual wear.', '₹1,099', '⭐️⭐️⭐️⭐️☆ (4.4)')">View More</button>
+  <button class="btn cart-btn">Add to Cart</button>
+</div>
+
+<div class="product-card">
+  <img src="shoes2.jpg" alt="Shoes and Sandals" />
+  <h3>Shoes 2</h3>
+  <p class="price">₹2,159</p>
+  <button class="btn" onclick="openModal('shoes2.jpg', 'Shoes 2', 'Elegant heels and sandals set for party and formal wear.', '₹2,159', '⭐️⭐️⭐️⭐️☆ (4.1)')">View More</button>
+  <button class="btn cart-btn">Add to Cart</button>
+</div>
+
+<div class="product-card">
+  <img src="makeup1.jpg" alt="Makeup Kit 1" />
+  <h3>Makeup Kit 1</h3>
+  <p class="price">₹999</p>
+  <button class="btn" onclick="openModal('makeup1.jpg', 'Makeup Kit 1', 'Essential makeup kit with foundation, lipstick, and more.', '₹999', '⭐️⭐️⭐️⭐️☆ (4.3)')">View More</button>
+  <button class="btn cart-btn">Add to Cart</button>
+</div>
+
+<div class="product-card">
+  <img src="makeup2.jpg" alt="Makeup Kit 2" />
+  <h3>Makeup Kit 2</h3>
+  <p class="price">₹1,299</p>
+  <button class="btn" onclick="openModal('makeup2.jpg', 'Makeup Kit 2', 'Premium makeup kit with full range of beauty essentials.', '₹1,299', '⭐️⭐️⭐️⭐️⭐️ (4.6)')">View More</button>
+  <button class="btn cart-btn">Add to Cart</button>
+</div>
+
+<div class="product-card">
+  <img src="dress1.jpg" alt="White and Pink Hearts Frock" />
+  <h3>Dress 1</h3>
+  <p class="price">₹1,799</p>
+  <button class="btn" onclick="openModal('dress1.jpg', 'Dress 1', 'White and pink frock with heart prints, perfect for summer.', '₹1,799', '⭐️⭐️⭐️⭐️☆ (4.2)')">View More</button>
+  <button class="btn cart-btn">Add to Cart</button>
+</div>
+
+<div class="product-card">
+  <img src="dress2.jpg" alt="Party Wear" />
+  <h3>Dress 2</h3>
+  <p class="price">₹2,099</p>
+  <button class="btn" onclick="openModal('dress2.jpg', 'Dress 2', 'Elegant party wear dress with shimmer and flow.', '₹2,099', '⭐️⭐️⭐️⭐️⭐️ (4.8)')">View More</button>
+  <button class="btn cart-btn">Add to Cart</button>
+</div>
+  </section>
+
+  <!-- Modal -->
+<div id="productModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img id="modalImage" src="" alt="Product Image" />
+    <h3 id="modalTitle"></h3>
+    <p id="modalDesc"></p>
+    <p class="price" id="modalPrice"></p>
+    <div class="rating" id="modalRating"></div>
+  </div>
+</div>
+
+
+<script>
+  function openModal(img, title, desc, price, rating) {
+    document.getElementById("modalImage").src = img;
+    document.getElementById("modalTitle").innerText = title;
+    document.getElementById("modalDesc").innerText = desc;
+    document.getElementById("modalPrice").innerText = "Price: " + price;
+    document.getElementById("modalRating").innerText = "Rating: " + rating;
+    document.getElementById("productModal").style.display = "flex";
+  }
+
+  function closeModal() {
+    document.getElementById("productModal").style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    let modal = document.getElementById("productModal");
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+
+  // Cart logic
+  const cartButtons = document.querySelectorAll('.cart-btn');
+  cartButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const card = button.closest('.product-card');
+      const title = card.querySelector('h3').innerText;
+      const price = card.querySelector('.price').innerText;
+      const img = card.querySelector('img').getAttribute('src');
+
+      const item = { title, price, img };
+
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push(item);
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      alert(`${title} added to cart!`);
+    });
+  });
+</script>
+
+
+ 
+</body>
+</html>
+

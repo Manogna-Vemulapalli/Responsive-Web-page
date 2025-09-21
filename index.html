@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Shop</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+    }
+
+    /* Header + Navbar */
+    header {
+      background-color: #007bff;
+      padding: 20px 0;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav ul li {
+      margin: 0 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    nav ul li a.active {
+      text-decoration: underline;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 20px 40px;
+    }
+
+    .hero h1 {
+      font-size: 4em;
+      color: #007bff;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      color: #444;
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+
+    .hero img {
+      width: 70%;
+      max-width: 1000px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+
+    .quick-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .quick-links a {
+      background-color: #007bff;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .quick-links a:hover {
+      background-color: #0056b3;
+    }
+
+    footer {
+      text-align: center;
+      margin: 40px 0 20px;
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Consistent Header -->
+   <header>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="features.html">Features</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="cart.html">Cart</a></li>
+    </ul>
+  </nav>
+</header>
+
+  <!-- Hero Section -->
+  <section class="showcase">
+    <h1>Simple Shop</h1>
+    <p>Welcome to Simple Shop — a clean, responsive web app designed to showcase fashion products with speed, style, and simplicity. Whether you're browsing features, exploring products, or reaching out through our contact form, everything is built to be intuitive and fast.</p>
+    <img src="SimpleShop1.jpg" alt="Simple Shop Preview" />
+
+    <div class="quick-links">
+      <a href="features.html">Explore Features</a>
+      <a href="products.html">View Products</a>
+      <a href="contact.html">Get in Touch</a>
+    </div>
+  </section>
+
+  <footer>
+    Built by: A fresher learning HTML — Resize the window to test responsiveness.
+  </footer>
+
+</body>
+</html>

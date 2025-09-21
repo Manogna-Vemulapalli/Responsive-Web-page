@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cart - Responsive Web App</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+    }
+
+    header {
+      background: #007bff;
+      padding: 10px 20px;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav ul li a.active {
+      text-decoration: underline;
+    }
+
+    .products-section {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .product-card {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 15px;
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: scale(1.05);
+    }
+
+    .product-card img {
+  width: 50%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+
+    .price {
+      font-size: 16px;
+      color: #28a745;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="products-section">
+    <h1>Your Cart</h1>
+    <div class="products-grid" id="cartContainer"></div>
+  </section>
+
+  <script>
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const container = document.getElementById('cartContainer');
+
+  function renderCart() {
+    container.innerHTML = '';
+
+    if (cart.length === 0) {
+      container.innerHTML = "<p>Your Cart is NOW EMPTY !!. Add Your Favourite Products into Cart</p>";
+      return;
+    }
+
+    cart.forEach((item, index) => {
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.innerHTML = `
+        <img src="${item.img}" alt="${item.title}" />
+        <h3>${item.title}</h3>
+        <p class="price">${item.price}</p>
+        <button class="btn remove-btn" onclick="removeFromCart(${index})">Remove</button>
+      `;
+      container.appendChild(card);
+    });
+  }
+
+  function removeFromCart(index) {
+    cart.splice(index, 1);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    renderCart();
+  }
+
+  renderCart();
+</script>
+
+
+</body>
+</html>
